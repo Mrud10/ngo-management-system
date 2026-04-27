@@ -40,7 +40,7 @@ const AdminNGODetail = () => {
         }
         try {
             setLoading(true);
-            const { data: result } = await axios.get(`http://localhost:5000/api/admin/ngo/${id}/details`, config);
+            const { data: result } = await axios.get(`https://ngo-management-system-production.up.railway.app/api/admin/ngo/${id}/details`, config);
             setData(result);
         } catch (err) {
             setError(err.response?.data?.message || 'Failed to fetch NGO details');
