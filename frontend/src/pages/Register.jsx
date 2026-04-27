@@ -71,7 +71,7 @@ const Register = () => {
             }
 
 
-            const res = await axios.post('http://localhost:5000/api/auth/register', data, {
+            axios.post('https://ngo-management-system-production.up.railway.app/api/auth/register', data, {
                 headers: { 'Content-Type': 'multipart/form-data' },
             });
 
