@@ -40,21 +40,20 @@ const NGODashboard = () => {
 
     const fetchStats = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/dashboard', config);
+            const { data } = await axios.get('https://ngo-management-system-production.up.railway.app/api/dashboard', config);
             setStats(data);
         } catch (err) { console.error(err); }
     };
 
     const fetchEvents = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/events', config);
-            setEvents(data);
+            const { data } = await axios.get('https://ngo-management-system-production.up.railway.app/api/events', config);
         } catch (err) { console.error(err); }
     };
 
     const fetchDonations = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/donations', config);
+            const { data } = await axios.get('https://ngo-management-system-production.up.railway.app/api/donations', config);
             setDonations(data);
         } catch (err) { console.error(err); }
     };
@@ -63,7 +62,7 @@ const NGODashboard = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            await axios.post('http://localhost:5000/api/events', formData, config);
+            await axios.post('https://ngo-management-system-production.up.railway.app/api/events', formData, config);
             showToast(' Event created successfully!');
             setFormData({ title: '', description: '', date: '', location: '', status: 'Upcoming' });
             fetchEvents();
@@ -77,7 +76,7 @@ const NGODashboard = () => {
     const handleDeleteEvent = async (id) => {
         if (window.confirm('Delete this event?')) {
             try {
-                await axios.delete(`http://localhost:5000/api/events/${id}`, config);
+                await axios.delete(`https://ngo-management-system-production.up.railway.app/api/events/${id}`, config);
                 showToast('Event deleted');
                 fetchEvents();
                 fetchStats();
