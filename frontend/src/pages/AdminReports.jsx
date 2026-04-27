@@ -29,14 +29,14 @@ const AdminReports = () => {
 
     const fetchNGOs = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/admin/users?role=NGO', config);
+            const { data } = await axios.get('https://ngo-management-system-production.up.railway.app/api/admin/users?role=NGO', config);
             setNgos(data);
         } catch (err) { console.error(err); }
     };
 
     const fetchEvents = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/events', config);
+           const { data } = await axios.get('https://ngo-management-system-production.up.railway.app/api/events', config);
             setEvents(data);
         } catch (err) { console.error(err); }
     };
@@ -50,7 +50,7 @@ const AdminReports = () => {
             if (filters.ngoId) params.append('ngoId', filters.ngoId);
             if (filters.eventId) params.append('eventId', filters.eventId);
 
-            const { data } = await axios.get(`http://localhost:5000/api/admin/reports?${params.toString()}`, config);
+           const { data } = await axios.get(`https://ngo-management-system-production.up.railway.app/api/admin/reports?${params.toString()}`, config);
             setReport(data);
             setGenerated(true);
         } catch (err) {
