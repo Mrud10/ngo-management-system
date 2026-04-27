@@ -45,35 +45,35 @@ const AdminDashboard = () => {
 
     const fetchStats = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/dashboard', config);
+            const { data } = await axios.get('https://ngo-management-system-production.up.railway.app/api/dashboard', config);
             setStats(data);
         } catch (err) { console.error(err); }
     };
 
     const fetchPendingNGOs = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/admin/pending-ngos', config);
+            const { data } = await axios.get('https://ngo-management-system-production.up.railway.app/api/admin/pending-ngos', config);
             setPendingNGOs(data);
         } catch (err) { console.error(err); }
     };
 
     const fetchAllUsers = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/admin/users', config);
+            const { data } = await axios.get('https://ngo-management-system-production.up.railway.app/api/admin/users', config);
             setAllUsers(data);
         } catch (err) { console.error(err); }
     };
 
     const fetchAllNGOs = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/admin/ngos', config);
+            const { data } = await axios.get('https://ngo-management-system-production.up.railway.app/api/admin/ngos', config);
             setAllNGOs(data);
         } catch (err) { console.error(err); }
     };
 
     const handleApprove = async (id) => {
         try {
-            await axios.put(`http://localhost:5000/api/admin/approve/${id}`, {}, config);
+            await axios.put(`https://ngo-management-system-production.up.railway.app/api/admin/approve/${id}`, {}, config);
             showToast(' NGO approved successfully!');
             fetchPendingNGOs();
             fetchAllUsers();
@@ -86,7 +86,7 @@ const AdminDashboard = () => {
     const handleReject = async (id) => {
         if (window.confirm('Reject and remove this NGO registration?')) {
             try {
-                await axios.put(`http://localhost:5000/api/admin/reject/${id}`, {}, config);
+                await axios.put(`https://ngo-management-system-production.up.railway.app/api/admin/reject/${id}`, {}, config);
                 showToast(' NGO registration rejected');
                 fetchPendingNGOs();
                 fetchAllUsers();
