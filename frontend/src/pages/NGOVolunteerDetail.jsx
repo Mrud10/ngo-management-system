@@ -14,7 +14,7 @@ const NGOVolunteerDetail = () => {
     useEffect(() => {
         const fetchDetails = async () => {
             try {
-                const { data } = await axios.get(`http://localhost:5000/api/ngo/volunteer/${id}`, config);
+                const { data } = await axios.get(`https://ngo-management-system-production.up.railway.app/api/ngo/volunteer/${id}`, config);
                 setDetails(data);
             } catch (err) {
                 console.error(err);
