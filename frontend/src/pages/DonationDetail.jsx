@@ -19,7 +19,7 @@ const DonationDetail = () => {
     useEffect(() => {
         const fetchDonation = async () => {
             try {
-                const { data } = await axios.get(`http://localhost:5000/api/donations/${id}/details`, config);
+                const { data } = await axios.get(`https://ngo-management-system-production.up.railway.app/api/donations/${id}/details`, config);
                 setDonation(data);
             } catch (err) {
                 console.error(err);
