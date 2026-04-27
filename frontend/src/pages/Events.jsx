@@ -38,7 +38,7 @@ const Events = () => {
 
     const fetchEvents = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/events', config);
+            const { data } = await axios.get('https://ngo-management-system-production.up.railway.app/api/events', config);
             setEvents(data);
         } catch (err) { console.error(err); }
     };
@@ -48,10 +48,10 @@ const Events = () => {
         setLoading(true);
         try {
             if (editId) {
-                await axios.put(`http://localhost:5000/api/events/${editId}`, formData, config);
+                await axios.put(`https://ngo-management-system-production.up.railway.app/api/events/${editId}`, formData, config);
                 showToast(' Event updated!');
             } else {
-                await axios.post('http://localhost:5000/api/events', formData, config);
+                await axios.post('https://ngo-management-system-production.up.railway.app/api/events', formData, config);
                 showToast('Event created successfully');
             }
             setFormData({ title: '', description: '', date: '', location: '', status: 'Upcoming' });
@@ -75,7 +75,7 @@ const Events = () => {
     const handleDelete = async (id) => {
         if (window.confirm('Delete this event?')) {
             try {
-                await axios.delete(`http://localhost:5000/api/events/${id}`, config);
+                await axios.delete(`https://ngo-management-system-production.up.railway.app/api/events/${id}`, config);
                 showToast('Event deleted');
                 fetchEvents();
             } catch (err) { showToast('Error deleting', 'error'); }
@@ -84,7 +84,7 @@ const Events = () => {
 
     const handleJoin = async (id) => {
         try {
-            await axios.post(`http://localhost:5000/api/events/${id}/join`, {}, config);
+           await axios.post(`https://ngo-management-system-production.up.railway.app/api/events/${id}/join`, {}, config);
             showToast('Successfully joined event!');
             fetchEvents();
         } catch (err) {
