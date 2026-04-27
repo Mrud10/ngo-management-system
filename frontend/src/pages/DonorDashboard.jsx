@@ -36,21 +36,20 @@ const DonorDashboard = () => {
 
     const fetchStats = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/dashboard', config);
-            setStats(data);
+            const { data } = await axios.get('https://ngo-management-system-production.up.railway.app/api/dashboard', config);
         } catch (err) { console.error(err); }
     };
 
     const fetchNGOs = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/donations/ngos', config);
+            const { data } = await axios.get('https://ngo-management-system-production.up.railway.app/api/donations/ngos', config);
             setNgos(data);
         } catch (err) { console.error(err); }
     };
 
     const fetchDonations = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/donations', config);
+            const { data } = await axios.get('https://ngo-management-system-production.up.railway.app/api/donations', config);
             setDonations(data);
         } catch (err) { console.error(err); }
     };
@@ -63,7 +62,7 @@ const DonorDashboard = () => {
                 ...formData,
                 frequency: formData.isRecurring ? 'Monthly' : 'One-Time'
             };
-            await axios.post('http://localhost:5000/api/donations', payload, config);
+            await axios.post('https://ngo-management-system-production.up.railway.app/api/donations', payload, config);
             showToast(' Donation successful! Thank you for your generosity.');
             setFormData({ amount: '', campaign: '', ngoId: '', isRecurring: false });
             fetchDonations();
