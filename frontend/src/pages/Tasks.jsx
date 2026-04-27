@@ -14,7 +14,7 @@ const Tasks = () => {
 
     const fetchTasks = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/tasks', config);
+            const { data } = await axios.get('https://ngo-management-system-production.up.railway.app/api/tasks', config);
             setTasks(data);
         } catch (err) { console.error(err); }
     };
@@ -23,7 +23,7 @@ const Tasks = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            await axios.post('http://localhost:5000/api/tasks', { ...formData, status: 'To Do' }, config);
+            await axios.post('https://ngo-management-system-production.up.railway.app/api/tasks', { ...formData, status: 'To Do' }, config);
             setFormData({ title: '', description: '' });
             fetchTasks();
         } catch (err) { alert('Error creating task'); }
@@ -32,7 +32,7 @@ const Tasks = () => {
 
     const handleMove = async (task, newStatus) => {
         try {
-            await axios.put(`http://localhost:5000/api/tasks/${task._id}`, { status: newStatus }, config);
+            await axios.put(`https://ngo-management-system-production.up.railway.app/api/tasks/${task._id}`, { status: newStatus }, config);
             fetchTasks();
         } catch (err) { console.error(err); }
     };
@@ -40,7 +40,7 @@ const Tasks = () => {
     const handleDelete = async (id) => {
         if (window.confirm('Delete this task?')) {
             try {
-                await axios.delete(`http://localhost:5000/api/tasks/${id}`, config);
+                await axios.delete(`https://ngo-management-system-production.up.railway.app/api/tasks/${id}`, config);
                 fetchTasks();
             } catch (err) { console.error(err); }
         }
