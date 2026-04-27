@@ -51,7 +51,7 @@ const CreateCause = () => {
                     'Content-Type': 'multipart/form-data',
                 },
             };
-            await axios.post('http://localhost:5000/api/causes', data, config);
+            await axios.post('https://ngo-management-system-production.up.railway.app/api/causes', data, config);
             showToast('Cause created successfully!', 'success');
             setTimeout(() => {
                 navigate('/');
