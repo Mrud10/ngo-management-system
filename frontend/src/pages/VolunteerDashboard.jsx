@@ -33,21 +33,21 @@ const VolunteerDashboard = () => {
 
     const fetchStats = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/dashboard', config);
+            const { data } = await axios.get('https://ngo-management-system-production.up.railway.app/api/dashboard', config);
             setStats(data);
         } catch (err) { console.error(err); }
     };
 
     const fetchEvents = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/events', config);
+           const { data } = await axios.get('https://ngo-management-system-production.up.railway.app/api/events', config);
             setAllEvents(data);
         } catch (err) { console.error(err); }
     };
 
     const fetchTasks = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/tasks', config);
+            const { data } = await axios.get('https://ngo-management-system-production.up.railway.app/api/tasks', config);
             // Show only my tasks
             setMyTasks(data.filter(t => t.assignedTo?._id === user._id || t.assignedTo === user._id));
         } catch (err) { console.error(err); }
@@ -55,7 +55,7 @@ const VolunteerDashboard = () => {
 
     const handleJoin = async (eventId) => {
         try {
-            await axios.post(`http://localhost:5000/api/events/${eventId}/join`, {}, config);
+            await axios.post(`https://ngo-management-system-production.up.railway.app/api/events/${eventId}/join`, {}, config);
             showToast(' Successfully joined the event!');
             fetchEvents();
             fetchStats();
@@ -66,7 +66,7 @@ const VolunteerDashboard = () => {
 
     const handleUpdateTaskStatus = async (taskId, newStatus) => {
         try {
-            await axios.put(`http://localhost:5000/api/tasks/${taskId}`, { status: newStatus }, config);
+            await axios.put(`https://ngo-management-system-production.up.railway.app/api/tasks/${taskId}`, { status: newStatus }, config);
             fetchTasks();
             fetchStats();
         } catch (err) { console.error(err); }
