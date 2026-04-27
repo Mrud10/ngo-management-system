@@ -13,7 +13,7 @@ const NGOVolunteerList = () => {
     useEffect(() => {
         const fetchNGOVolunteers = async () => {
             try {
-                const { data } = await axios.get('http://localhost:5000/api/ngo/volunteers', config);
+                const { data } = await axios.get('https://ngo-management-system-production.up.railway.app/api/ngo/volunteers', config);
                 // Remove duplicates if the volunteer is assigned to multiple events
                 const uniqueVolunteers = Array.from(new Set(data.map(v => v._id)))
                     .map(id => data.find(v => v._id === id));
