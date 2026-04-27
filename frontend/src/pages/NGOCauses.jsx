@@ -99,7 +99,7 @@ const DonationModal = ({ cause, onClose, onDonate, fallbackImg }) => {
         ? Math.min((cause.raisedAmount / cause.targetAmount) * 100, 100)
         : 0;
     const isFullyFunded = progress >= 100;
-    const imageUrl = cause.image ? `http://localhost:5000${cause.image}` : fallbackImg;
+    const imageUrl = cause.image ? `https://ngo-management-system-production.up.railway.app${cause.image}` : fallbackImg;
 
     // Format card number with spaces
     const handleCardNumber = (val) => {
@@ -363,7 +363,7 @@ const NGOCauses = () => {
     const fetchCausesAndNGO = async () => {
         setLoading(true);
         try {
-            const { data } = await axios.get(`http://localhost:5000/api/causes/ngo/${ngoId}`, config);
+            const { data } = await axios.get(`https://ngo-management-system-production.up.railway.app/api/causes/ngo/${ngoId}`, config);
             if (data && data.causes !== undefined) {
                 setCauses(data.causes);
                 setNgoDetails(data.ngo);
@@ -380,7 +380,7 @@ const NGOCauses = () => {
     // Called from inside DonationModal — actual API call
     const handleDonate = async (cause, amount, recurring) => {
         try {
-            await axios.post('http://localhost:5000/api/donations', {
+            await axios.post('https://ngo-management-system-production.up.railway.app/api/donations', {
                 amount,
                 ngoId: cause.ngoId,
                 causeId: cause._id,
@@ -490,8 +490,8 @@ const NGOCauses = () => {
                                 : 0;
                             const fallback = causePlaceholders[index % causePlaceholders.length];
                             const imageUrl = cause.image
-                                ? `http://localhost:5000${cause.image}`
-                                : fallback;
+                              ? `https://ngo-management-system-production.up.railway.app${cause.image}`
+                              : fallback;
                             const isFullyFunded = progress >= 100;
 
                             return (
