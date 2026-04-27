@@ -21,7 +21,7 @@ const BrowseNGOs = () => {
 
     const fetchNGOs = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/donations/ngos', config);
+            const { data } = await axios.get('https://ngo-management-system-production.up.railway.app/api/donations/ngos', config);
             setNgos(data);
         } catch (err) {
             console.error(err);
@@ -62,7 +62,7 @@ const BrowseNGOs = () => {
                                 {/* Card image */}
                                 <div className="ngo-browse-img-wrap">
                                     <img
-                                        src={ngo.image ? `http://localhost:5000/uploads/${ngo.image}` : fallback}
+                                       src={ngo.image ? `https://ngo-management-system-production.up.railway.app/uploads/${ngo.image}` : fallback}
                                         onError={e => (e.target.src = fallback)}
                                         alt={ngo.ngoName || ngo.name}
                                         className="ngo-browse-img"
