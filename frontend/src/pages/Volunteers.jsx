@@ -34,7 +34,7 @@ const Volunteers = () => {
 
     const fetchVolunteers = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/volunteers', config);
+            const { data } = await axios.get('https://ngo-management-system-production.up.railway.app/api/volunteers', config);
             setVolunteers(data);
         } catch (error) {
             console.error(error);
@@ -47,10 +47,10 @@ const Volunteers = () => {
         const payload = { ...formData, skills: formData.skills.split(',').map(s => s.trim()).filter(Boolean) };
         try {
             if (editId) {
-                await axios.put(`http://localhost:5000/api/volunteers/${editId}`, payload, config);
+                await axios.put(`https://ngo-management-system-production.up.railway.app/api/volunteers/${editId}`, payload, config);
                 showToast(' Volunteer updated!');
             } else {
-                await axios.post('http://localhost:5000/api/volunteers', payload, config);
+                await axios.post('https://ngo-management-system-production.up.railway.app/api/volunteers', payload, config);
                 showToast(' Volunteer added!');
             }
             setFormData({ name: '', email: '', skills: '', status: 'Available' });
@@ -70,7 +70,7 @@ const Volunteers = () => {
     const handleDelete = async (id) => {
         if (window.confirm('Delete this volunteer?')) {
             try {
-                await axios.delete(`http://localhost:5000/api/volunteers/${id}`, config);
+                await axios.delete(`https://ngo-management-system-production.up.railway.app/api/volunteers/${id}`, config);
                 showToast('Volunteer removed');
                 fetchVolunteers();
             } catch (error) {
