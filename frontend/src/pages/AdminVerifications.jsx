@@ -15,7 +15,7 @@ const AdminVerifications = () => {
 
     const fetchPending = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/admin/pending-verifications', config);
+            const { data } = await axios.get('https://ngo-management-system-production.up.railway.app/api/admin/pending-verifications', config);
             setPending(data);
         } catch (err) {
             console.error(err);
@@ -26,7 +26,7 @@ const AdminVerifications = () => {
     const handleAction = async (id, action) => {
         if (!window.confirm(`Are you sure you want to ${action} this user?`)) return;
         try {
-            await axios.put(`http://localhost:5000/api/admin/${action}-verification/${id}`, {}, config);
+            await axios.put(`https://ngo-management-system-production.up.railway.app/api/admin/${action}-verification/${id}`, {}, config);
             setPending(pending.filter(p => p._id !== id));
         } catch (err) {
             console.error(err);
@@ -76,7 +76,7 @@ const AdminVerifications = () => {
                                 <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)' }}>ID Proof Document:</label>
                                 {record.idProof ? (
                                     <div style={{ marginTop: '0.5rem' }}>
-                                        <a href={`http://localhost:5000/uploads/${record.idProof}`} target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ display: 'inline-flex', padding: '0.5rem', fontSize: '0.85rem' }}>
+                                        <a href={`https://ngo-management-system-production.up.railway.app/uploads/${record.idProof}`} target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ display: 'inline-flex', padding: '0.5rem', fontSize: '0.85rem' }}>
                                              View Document
                                         </a>
                                     </div>
